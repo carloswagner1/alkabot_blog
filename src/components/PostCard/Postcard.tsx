@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Button, Offcanvas } from 'react-bootstrap';
+import { Card, Button, Offcanvas, ListGroup, ListGroupItem } from 'react-bootstrap';
 import axios from 'axios';
+import './PostCard.css';
 
 interface Post {
     id: number;
@@ -30,27 +31,35 @@ const PostCard: React.FC<PostProps> = ({ post }) => {
     }, [post.id]);
 
     return (
-        <Card className="my-3" >
+        <Card border="dark" className="my-3 mx-auto" >
             <Card.Header >
                 <h5>{post.title}</h5>
             </Card.Header>
             <Card.Body>
                 <Card.Text>{post.body}</Card.Text>
-                <Button onClick={() => setShowComments(true)}>View Comments</Button>
+                <Button onClick={() => setShowComments(true)}>Ver Comentários</Button>
             </Card.Body>
 
             <Offcanvas show={showComments} onHide={() => setShowComments(false)} placement="end">
                 <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>Comments</Offcanvas.Title>
+                    <Offcanvas.Title>Commentários</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
-                    {comments.map(comment => (
-                        <div key={comment.id} className="my-3">
-                            <h6>{comment.name}</h6>
-                            <p>{comment.body}</p>
-                            <p><small>{comment.email}</small></p>
-                        </div>
-                    ))}
+                    <ListGroup as="ol" numbered>
+                        {comments.map(comment => (
+                            <ListGroupItem as="li"
+                            className="d-flex justify-content-between align-items-start"
+                          >
+                                <div key={comment.id} className="ms-2 me-auto">
+                                    <p className='fw-bold'>{comment.name}</p>
+                                    <p>{comment.body}</p>
+                                    <p><small>{comment.email}</small></p>
+                                </div>
+                            </ListGroupItem>
+                        ))}
+
+                    </ListGroup>
+
                 </Offcanvas.Body>
             </Offcanvas>
         </Card>

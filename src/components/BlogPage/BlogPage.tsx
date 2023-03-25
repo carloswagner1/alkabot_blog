@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import axios from 'axios';
 import PostCard from '../PostCard/Postcard';
+import Header from '../Header/Header';
 
 
 interface Post {
@@ -20,14 +21,17 @@ const BlogPage: React.FC = () => {
   }, []);
 
   return (
+    <>
+      <Header />
+      <Container className="fluid mt-4 w-75" >
+        <h3 className="mt-3 mb-5 ">Meus Posts</h3>
+        {posts.map(post => (
+          <PostCard key={post.id} post={post} />
+        ))}
+      </Container>
+    </>
 
-    <Container className="mt-4">
 
-      <h1 className="mt-3 mb-5">My Blog</h1>
-      {posts.map(post => (
-        <PostCard key={post.id} post={post} />
-      ))}
-    </Container>
   );
 };
 
