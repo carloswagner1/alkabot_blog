@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Button, Offcanvas, ListGroup, ListGroupItem, Row, Col } from 'react-bootstrap';
+import { Card, Button, Offcanvas, ListGroup, ListGroupItem, Row, Col, Placeholder } from 'react-bootstrap';
 import axios from 'axios';
 
 interface Post {
     id: number;
     title: string;
     body: string;
+    userId: number;
 }
 
 interface Comment {
@@ -15,11 +16,17 @@ interface Comment {
     body: string;
 }
 
-interface PostProps {
-    post: Post;
+interface User {
+    id: number;
+    name: string;
 }
 
-const PostCard: React.FC<PostProps> = ({ post }) => {
+interface PostProps {
+    post: Post;
+    username: string;
+}
+
+const PostCard: React.FC<PostProps> = ({ post, username }) => {
     const [comments, setComments] = useState<Comment[]>([]);
     const [showComments, setShowComments] = useState(false);
 
@@ -35,6 +42,7 @@ const PostCard: React.FC<PostProps> = ({ post }) => {
                 <Card className="mb-4 bg-light " >
                     <Card.Header  key={post.id}>
                         <h5>{post.title}</h5>
+                        <p><small>by {username}</small></p>
                     </Card.Header>
                     <Card.Body className="text-justify">
                         <Card.Text>{post.body}</Card.Text>
@@ -52,21 +60,19 @@ const PostCard: React.FC<PostProps> = ({ post }) => {
                                         className="d-flex justify-content-between align-items-start"
                                     >
                                         <div key={comment.id} className="ms-2 me-auto text-wrap">
-                                            <p className='fw-bold'>{comment.name}</p>
                                             <p>{comment.body}</p>
-                                            <p><small>{comment.email}</small></p>
+                                            <p><small><span className='fw-bold'>nome: </span>
+                                             {comment.name}
+                                             <br/><span className='fw-bold'>email: </span> {comment.email}</small></p>
                                         </div>
                                     </ListGroupItem>
                                 ))}
-
                             </ListGroup>
-
                         </Offcanvas.Body>
                     </Offcanvas>
                 </Card>
             </Col>
         </Row>
-
     );
 };
 

@@ -6,7 +6,7 @@ import AboutPageTag from "../../components/Tags/AboutPageTag";
 
 export default function AboutPage() {
   return (
-      <Container className="mt-5 pt-5 contact-page">
+      <Container className="mt-5 pt-5 bg-image">
         <Row>
           <Col sm={2}>
             <AboutPageTag />

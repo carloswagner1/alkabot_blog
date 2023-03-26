@@ -12,7 +12,7 @@ function App(): JSX.Element {
 
   return (
       <Routes>
-        <Route path='/' element={<MasterPage />}>
+        <Route path="/" element={<MasterPage />}>
           <Route path="/" element={<BlogPage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="contact" element={<Contact />} />
