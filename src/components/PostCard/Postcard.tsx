@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Button, Offcanvas, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Card, Button, Offcanvas, ListGroup, ListGroupItem, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
-import './PostCard.css';
 
 interface Post {
     id: number;
@@ -31,38 +30,43 @@ const PostCard: React.FC<PostProps> = ({ post }) => {
     }, [post.id]);
 
     return (
-        <Card border="dark" className="my-3 mx-auto" >
-            <Card.Header >
-                <h5>{post.title}</h5>
-            </Card.Header>
-            <Card.Body>
-                <Card.Text>{post.body}</Card.Text>
-                <Button onClick={() => setShowComments(true)}>Ver Comentários</Button>
-            </Card.Body>
+        <Row className="g-4">
+            <Col>
+                <Card className="mb-4 bg-light " >
+                    <Card.Header  key={post.id}>
+                        <h5>{post.title}</h5>
+                    </Card.Header>
+                    <Card.Body className="text-justify">
+                        <Card.Text>{post.body}</Card.Text>
+                        <Button onClick={() => setShowComments(true)}>Ver Comentários</Button>
+                    </Card.Body>
 
-            <Offcanvas show={showComments} onHide={() => setShowComments(false)} placement="end">
-                <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>Commentários</Offcanvas.Title>
-                </Offcanvas.Header>
-                <Offcanvas.Body>
-                    <ListGroup as="ol" numbered>
-                        {comments.map(comment => (
-                            <ListGroupItem as="li"
-                            className="d-flex justify-content-between align-items-start"
-                          >
-                                <div key={comment.id} className="ms-2 me-auto">
-                                    <p className='fw-bold'>{comment.name}</p>
-                                    <p>{comment.body}</p>
-                                    <p><small>{comment.email}</small></p>
-                                </div>
-                            </ListGroupItem>
-                        ))}
+                    <Offcanvas show={showComments} onHide={() => setShowComments(false)} placement="end">
+                        <Offcanvas.Header closeButton>
+                            <Offcanvas.Title>Comentários</Offcanvas.Title>
+                        </Offcanvas.Header>
+                        <Offcanvas.Body className="text-justify">
+                            <ListGroup as="ol" numbered>
+                                {comments.map(comment => (
+                                    <ListGroupItem as="li"
+                                        className="d-flex justify-content-between align-items-start"
+                                    >
+                                        <div key={comment.id} className="ms-2 me-auto text-wrap">
+                                            <p className='fw-bold'>{comment.name}</p>
+                                            <p>{comment.body}</p>
+                                            <p><small>{comment.email}</small></p>
+                                        </div>
+                                    </ListGroupItem>
+                                ))}
 
-                    </ListGroup>
+                            </ListGroup>
 
-                </Offcanvas.Body>
-            </Offcanvas>
-        </Card>
+                        </Offcanvas.Body>
+                    </Offcanvas>
+                </Card>
+            </Col>
+        </Row>
+
     );
 };
 
