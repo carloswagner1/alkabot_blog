@@ -1,4 +1,4 @@
-#AlkaBot Blog
+# AlkaBot Blog
 
 This is a test project based on the instructions provided by the AlkaBot team, based on a hypothetical situation for developing the solution.
 
@@ -12,13 +12,15 @@ git clone git@github.com:carloswagner1/alkabot_blog.git
 3. Access the application directory:
 cd .\alkabot_blog\
 
-4. Install project dependencies:
+4. Install project dependencies: <br/>
 npm i
 
-5. Start the application:
+5. Start the application: <br/>
 npm start
 
-
+<br/>
+<br/>
+<br/>
 
 ## Getting Started with Create React App
 
