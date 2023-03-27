@@ -3,7 +3,6 @@ import { Col, Container, Form, Image, InputGroup, Row } from 'react-bootstrap';
 import axios from 'axios';
 import PostCard from '../../components/PostCard/Postcard';
 import PostPageTag from '../../components/Tags/PostPageTag';
-import SearchInput from '../../components/SearchInput/SearchInput';
 
 interface Post {
   id: number;

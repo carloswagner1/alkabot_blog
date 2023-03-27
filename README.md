@@ -1,4 +1,26 @@
-# Getting Started with Create React App
+#AlkaBot Blog
+
+This is a test project based on the instructions provided by the AlkaBot team, based on a hypothetical situation for developing the solution.
+
+Follow these steps to run the solution:
+
+1. Open your operating system's terminal or git bash in the project's destination directory.
+
+2. Clone the project repository with the following command:
+git clone git@github.com:carloswagner1/alkabot_blog.git
+
+3. Access the application directory:
+cd .\alkabot_blog\
+
+4. Install project dependencies:
+npm i
+
+5. Start the application:
+npm start
+
+
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

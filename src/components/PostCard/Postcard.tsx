@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Button, Offcanvas, ListGroup, ListGroupItem, Row, Col, Placeholder } from 'react-bootstrap';
+import { Card, Button, Offcanvas, ListGroup, ListGroupItem, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 
 interface Post {
