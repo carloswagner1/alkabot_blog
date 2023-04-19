@@ -6,7 +6,8 @@ import './MasterPage.scss'
 
 export default function MasterPage() {
     return (
-        <>            <Header />
+        <>
+            <Header />
             <Container >
                 <Outlet />
             </Container>
